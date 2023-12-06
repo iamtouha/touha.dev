@@ -1,8 +1,16 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import "../styles/globals.css";
 ---
 
-<BaseLayout title="Home">
-  <h1>Astro</h1>
+<BaseLayout
+  title="Home"
+  description="Hi, this is Touha. Welcome to my portfolio."
+>
+  <div class="container md:max-w-screen-md mx-auto">
+    <h1 class="text-4xl font-bold text-primary mt-8">Hi, I'm Touha</h1>
+    <p class="mt-4 text-lg">
+      I'm a full stack web developer based in Dhaka, Bangladesh. I build modern
+      web applications in typescript using modern frameworks like .
+    </p>
+  </div>
 </BaseLayout>

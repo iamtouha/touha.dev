@@ -5,7 +5,7 @@ export default {
   tabWidth: 2,
   semi: true,
   singleQuote: false,
-  printWidth: 140,
+  printWidth: 80,
   overrides: [
     {
       files: "*.astro",

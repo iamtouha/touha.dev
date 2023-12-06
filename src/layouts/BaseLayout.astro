@@ -1,5 +1,7 @@
 ---
+import "../styles/globals.css";
 import { SEO } from "astro-seo";
+import Header from "../components/Header.astro";
 interface Props {
   title: string;
   description?: string;
@@ -14,7 +16,9 @@ const { title, description, image, type } = Astro.props;
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
       return localStorage.getItem("theme");
     }
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
   };
   const isDark = getThemePreference() === "dark";
   document.documentElement.classList[isDark ? "add" : "remove"]("dark");
@@ -24,23 +28,40 @@ const { title, description, image, type } = Astro.props;
       const isDark = document.documentElement.classList.contains("dark");
       localStorage.setItem("theme", isDark ? "dark" : "light");
     });
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
   }
 </script>
 
 <html lang="en">
-  <head>
-    <SEO
-      title={title}
-      titleTemplate="%s | Touha Zohair"
-      description={description}
-      openGraph={{
-        basic: { title, type: type ?? "webpage", image: image ?? "/assets/astro-logo.png" },
-        image: image ? { url: image, width: 1200, height: 630, alt: title } : undefined,
-      }}
-    />
-  </head>
-  <body class="dark:bg-black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <SEO
+    title={title}
+    titleTemplate="%s | Touha Zohair"
+    description={description}
+    openGraph={{
+      basic: {
+        title,
+        type: type ?? "webpage",
+        image: image ?? "/assets/astro-logo.png",
+      },
+      image: image
+        ? { url: image, width: 1200, height: 630, alt: title }
+        : undefined,
+    }}
+  />
+  <link rel="icon" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cookie&family=Rubik:wght@300;400;500;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <body>
+    <Header />
     <slot />
   </body>
 </html>

@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon";
+import Button from "@/components/ui/Button.astro";
+import GithubIcon from "@/components/icons/Github.astro";
+import TwitterIcon from "@/components/icons/Twitter.astro";
+
+const social = [
+  {
+    name: "X",
+    href: "https://twitter.com/iamtouha",
+    icon: GithubIcon,
+  },
+  {
+    name: "X",
+    href: "https://twitter.com/iamtouha",
+    icon: TwitterIcon,
+  },
+];
+---
+
+<header class="py-2 px-4">
+  <div class="container mx-auto md:max-w-screen-md flex justify-between">
+    <a class="text-4xl leading-none font-medium font-cursive" href="/">Touha</a>
+    <div class="flex space-x-1">
+      {
+        social.map((item) => (
+          <a href={item.href} tabindex={-1} target="_blank">
+            <Button variant={"ghost"} size={"icon"}>
+              <item.icon class="w-5 h-5" />
+            </Button>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</header>
