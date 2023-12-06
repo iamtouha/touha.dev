@@ -6,46 +6,18 @@ import Button from "@/components/ui/Button.astro";
 import NextjsLogo from "@/assets/next-js.svg";
 import ReactLogo from "@/assets/react-2.svg";
 import NodeLogo from "@/assets/nodejs-icon.svg";
+import Chip from "./Chip.astro";
 ---
 
 <h1 class="text-4xl font-bold text-primary mt-8">Hi, I'm Touha</h1>
 <p class="mt-4 text-lg">
   I'm a full stack web developer based in Dhaka, Bangladesh. I build modern web
   apps in typescript using
-
-  <Badge
-    href="https://nextjs.org/"
-    target="_blank"
-    variant={"secondary"}
-    class="text-base translate-y-0.5 px-1.5 leading-tight"
-  >
-    <Image src={NextjsLogo} alt={"nextjs"} class="w-4 h-4 -my-1 mr-1" />
-     Nextjs
-  </Badge>
-
+  <Chip href="https://nextjs.org/" src={NextjsLogo} label="Nextjs" />
    and other frontend frameworks based on
-  <Badge
-    href="https://react.dev/"
-    target="_blank"
-    variant={"secondary"}
-    class="text-base translate-y-0.5 leading-tight"
-  >
-    <Image src={ReactLogo} alt={"react"} class="w-4 h-4 -my-1 mr-1" />
-     React
-  </Badge>
-   . I also build fast, scalable and maintainable backend services and APIs in <Badge
-    href="https://nodejs.org/"
-    target="_blank"
-    variant={"secondary"}
-    class="text-base translate-y-0.5 leading-tight"
-  >
-    <Image
-      src={NodeLogo}
-      alt={"node"}
-      class="w-4 h-4 -my-1 mr-1 rounded-full"
-    />
-     Nodejs
-  </Badge>
+  <Chip href="https://react.dev/" src={ReactLogo} label="React" />
+   . I also build fast, scalable and maintainable backend services and APIs in
+  <Chip href="https://nodejs.org/" src={NodeLogo} label="Nodejs" />
    or other javascript runtime environments.
 </p>
 <p class="mt-4 text-lg">
