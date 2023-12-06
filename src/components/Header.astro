@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import ThemeToggle from "@/components/ThemeToggle";
 import Button from "@/components/ui/Button.astro";
 import GithubIcon from "@/components/icons/Github.astro";
 import TwitterIcon from "@/components/icons/Twitter.astro";
@@ -31,6 +31,7 @@ const social = [
           </a>
         ))
       }
+      <ThemeToggle client:load />
     </div>
   </div>
 </header>

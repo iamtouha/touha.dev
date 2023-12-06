@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+import Badge from "@/components/ui/Badge.astro";
+import Button from "@/components/ui/Button.astro";
+
+import NextjsLogo from "@/assets/next-js.svg";
+import ReactLogo from "@/assets/react-2.svg";
+import NodeLogo from "@/assets/nodejs-icon.svg";
+---
+
+<h1 class="text-4xl font-bold text-primary mt-8">Hi, I'm Touha</h1>
+<p class="mt-4 text-lg">
+  I'm a full stack web developer based in Dhaka, Bangladesh. I build modern web
+  apps in typescript using
+
+  <Badge
+    href="https://nextjs.org/"
+    target="_blank"
+    variant={"secondary"}
+    class="text-base translate-y-0.5 px-1.5 leading-tight"
+  >
+    <Image src={NextjsLogo} alt={"nextjs"} class="w-4 h-4 -my-1 mr-1" />
+     Nextjs
+  </Badge>
+
+   and other frontend frameworks based on
+  <Badge
+    href="https://react.dev/"
+    target="_blank"
+    variant={"secondary"}
+    class="text-base translate-y-0.5 leading-tight"
+  >
+    <Image src={ReactLogo} alt={"react"} class="w-4 h-4 -my-1 mr-1" />
+     React
+  </Badge>
+   . I also build fast, scalable and maintainable backend services and APIs in <Badge
+    href="https://nodejs.org/"
+    target="_blank"
+    variant={"secondary"}
+    class="text-base translate-y-0.5 leading-tight"
+  >
+    <Image
+      src={NodeLogo}
+      alt={"node"}
+      class="w-4 h-4 -my-1 mr-1 rounded-full"
+    />
+     Nodejs
+  </Badge>
+   or other javascript runtime environments.
+</p>
+<p class="mt-4 text-lg">
+  If you have a project that you want to get started, think you need my help
+  with something or just fancy saying hey, then email me at
+  <a href="mailto:mail@touha.dev">
+    <Button variant="link" class="px-0 py-0 text-lg">mail@touha.dev</Button>
+  </a>.
+</p>
