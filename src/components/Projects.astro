@@ -1,1 +1,60 @@
-<h1 class="mt-8">Projects</h1>
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import Card from "@/components/ui/card/Card.astro";
+import CardHeader from "@/components/ui/card/CardHeader.astro";
+import CardTitle from "@/components/ui/card/CardTitle.astro";
+import CardDescription from "@/components/ui/card/CardDescription.astro";
+import CardContent from "@/components/ui/card/CardContent.astro";
+import Badge from "@/components/ui/Badge.astro";
+
+import { tagsMap } from "@/lib/tags-map";
+
+interface Props {
+  projects: CollectionEntry<"projects">[];
+}
+
+const { projects } = Astro.props;
+---
+
+<a href="#projects">
+  <h1 class="mt-8 text-xl font-medium section-title max-w-max">My Projects</h1>
+</a>
+
+<div class="mt-4 flex">
+  {
+    projects.map((project) => (
+      <a href={`/projects/${project.slug}`}>
+        <Card class="overflow-hidden">
+          <Image
+            src={project.data.image}
+            alt={project.data.title}
+            width={320}
+            height={180}
+            class="w-[300px] h-[160px]"
+          />
+          <CardHeader>
+            <CardTitle>{project.data.title}</CardTitle>
+            <CardDescription>{project.data.description}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            {project.data.tags.map((tag) => (
+              <Badge variant="outline" class="mr-1">
+                {tagsMap[tag] ? (
+                  <Image
+                    src={tagsMap[tag]}
+                    alt={tag}
+                    width={24}
+                    height={24}
+                    class="h-4 w-4 mr-1"
+                  />
+                ) : null}
+                {tag}
+              </Badge>
+            ))}
+          </CardContent>
+        </Card>
+      </a>
+    ))
+  }
+</div>

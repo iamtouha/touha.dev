@@ -1,6 +1,10 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Introduction from "@/components/Introduction.astro";
+import Projects from "@/components/Projects.astro";
+
+const projects = await getCollection("projects");
 ---
 
 <BaseLayout
@@ -9,5 +13,6 @@ import Introduction from "@/components/Introduction.astro";
 >
   <div class="container p-2 md:max-w-screen-md mx-auto">
     <Introduction />
+    <Projects projects={projects} />
   </div>
 </BaseLayout>

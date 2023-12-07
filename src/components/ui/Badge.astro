@@ -5,9 +5,21 @@ import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"a">, BadgeVariants {}
 
-const { variant, class: className, ...props } = Astro.props;
+const { variant, href, class: className, ...props } = Astro.props;
 ---
 
-<a {...props} class={cn(badgeVariants({ variant, class: className }))}>
-  <slot />
-</a>
+{
+  href ? (
+    <a
+      {...props}
+      href={href}
+      class={cn(badgeVariants({ variant, class: className }))}
+    >
+      <slot />
+    </a>
+  ) : (
+    <span {...props} class={cn(badgeVariants({ variant, class: className }))}>
+      <slot />
+    </span>
+  )
+}
