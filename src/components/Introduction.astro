@@ -1,29 +1,42 @@
 ---
 import { Image } from "astro:assets";
-import Badge from "@/components/ui/Badge.astro";
-import Button from "@/components/ui/Button.astro";
 
 import NextjsLogo from "@/assets/next-js.svg";
 import ReactLogo from "@/assets/react-2.svg";
 import NodeLogo from "@/assets/nodejs-icon.svg";
 import Chip from "./Chip.astro";
+
+import ProfilePhoto from "@/assets/touha.jpeg";
 ---
 
-<h1 class="text-4xl font-bold text-primary mt-8">Hi, I'm Touha</h1>
-<p class="mt-4 text-lg">
-  I'm a full stack web developer based in Dhaka, Bangladesh. I build modern web
-  apps in typescript using
-  <Chip href="https://nextjs.org/" src={NextjsLogo} label="Nextjs" />
-   and other frontend frameworks based on
-  <Chip href="https://react.dev/" src={ReactLogo} label="React" />
-   . I also build fast, scalable and maintainable backend services and APIs in
-  <Chip href="https://nodejs.org/" src={NodeLogo} label="Nodejs" />
-   or other javascript runtime environments.
+<div class="flex space-x-6">
+  <div>
+    <div
+      class="rounded-full overflow-hidden w-[72px] h-[72px] border-4 ring-4 border-muted-foreground ring-secondary ring-opacity-40"
+    >
+      <Image src={ProfilePhoto} alt="Touha Zohair" class="w-16 h-16" />
+    </div>
+  </div>
+  <div>
+    <h1 class="text-3xl text-primary font-medium">Touha</h1>
+    <p class="text-lg text-muted-foreground mt-0.5">Full Stack Web Developer</p>
+  </div>
+</div>
+<p class="mt-8 text-lg">
+  Crafting modern TypeScript web apps with <Chip
+    href="https://nextjs.org/"
+    src={NextjsLogo}
+    label="Nextjs"
+  /> and other <Chip href="https://react.dev/" src={ReactLogo} label="React" />
+   based frameworks. Developing scalable, speedy backends and APIs in <Chip
+    href="https://nodejs.org/"
+    src={NodeLogo}
+    label="Nodejs"
+  /> or compatible JavaScript runtimes.
 </p>
 <p class="mt-4 text-lg">
-  If you have a project that you want to get started, think you need my help
-  with something or just fancy saying hey, then email me at
-  <a href="mailto:mail@touha.dev">
-    <Button variant="link" class="px-0 py-0 text-lg">mail@touha.dev</Button>
-  </a>.
+  Need assistance or want to start a project? Email me at <a
+    href="mailto:mail@touha.dev"
+    class="font-bold hover:underline">mail@touha.dev</a
+  >.
 </p>

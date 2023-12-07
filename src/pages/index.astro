@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import Navbar from "@/components/Navbar.astro";
 import Introduction from "@/components/Introduction.astro";
 import Projects from "@/components/Projects.astro";
 
@@ -11,8 +12,11 @@ const projects = await getCollection("projects");
   title="Welcome"
   description="Hi, this is Touha. Welcome to my portfolio."
 >
-  <div class="container p-2 md:max-w-screen-md mx-auto">
+  <div class="container p-4 sm:max-w-screen-sm mx-auto pt-48">
     <Introduction />
+    <div class="mt-12 sm:mt-8">
+      <Navbar />
+    </div>
     <Projects projects={projects} />
   </div>
 </BaseLayout>

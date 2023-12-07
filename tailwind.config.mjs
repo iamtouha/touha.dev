@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Rubik", ...defaultTheme.fontFamily.sans],
+        sans: ["Mulish", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",

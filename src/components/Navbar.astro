@@ -1,0 +1,50 @@
+---
+import ThemeToggle from "@/components/ThemeToggle";
+import Button from "@/components/ui/Button.astro";
+import GithubIcon from "@/components/icons/Github.astro";
+import TwitterIcon from "@/components/icons/Twitter.astro";
+import FeatherIcon from "@/components/icons/Feather.astro";
+import MessageIcon from "@/components/icons/Message.astro";
+
+const social = [
+  {
+    name: "Projects",
+    href: "/projects",
+    icon: FeatherIcon,
+  },
+  {
+    name: "Blog",
+    href: "/blog",
+    icon: MessageIcon,
+  },
+  {
+    name: "Github",
+    href: "https://github.com/touha98",
+    icon: GithubIcon,
+  },
+  {
+    name: "Twitter",
+    href: "https://twitter.com/iamtouha",
+    icon: TwitterIcon,
+  },
+];
+---
+
+<nav class="p-2 flex space-x-7">
+  {
+    social.map((item) => (
+      <a
+        href={item.href}
+        target="_blank"
+        class="group focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      >
+        <div class="flex items-center flex-col sm:flex-row font-bold gap-1 sm:gap-2">
+          <div class="bg-primary text-primary-foreground p-1 rounded-lg group-hover:shadow-lg transition transform ease-out group-active:translate-y-1 group-hover:scale-[1.2]">
+            <item.icon class="w-[18px] h-[18px] transform transition ease-out group-hover:scale-110 delay-100 duration-500" />
+          </div>
+          {item.name}
+        </div>
+      </a>
+    ))
+  }
+</nav>
