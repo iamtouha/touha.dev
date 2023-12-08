@@ -17,42 +17,46 @@ interface Props {
 const { projects } = Astro.props;
 ---
 
-<a href="#projects">
-  <h1 class="mt-8 text-xl font-medium section-title max-w-max">My Projects</h1>
-</a>
+<h1 class="text-xl font-bold">My Projects</h1>
 
-<div class="mt-4 flex">
+<div class="mt-8">
   {
     projects.map((project) => (
       <a href={`/projects/${project.slug}`}>
-        <Card class="overflow-hidden">
-          <Image
-            src={project.data.image}
-            alt={project.data.title}
-            width={320}
-            height={180}
-            class="w-[300px] h-[160px]"
-          />
-          <CardHeader>
-            <CardTitle>{project.data.title}</CardTitle>
-            <CardDescription>{project.data.description}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            {project.data.tags.map((tag) => (
-              <Badge variant="outline" class="mr-1">
-                {tagsMap[tag] ? (
-                  <Image
-                    src={tagsMap[tag]}
-                    alt={tag}
-                    width={24}
-                    height={24}
-                    class="h-4 w-4 mr-1"
-                  />
-                ) : null}
-                {tag}
-              </Badge>
-            ))}
-          </CardContent>
+        <Card class="flex flex-col-reverse sm:flex-row p-4 gap-3 sm:p-6 sm:gap-6 border-0 transition-colors duration-500 hover:bg-secondary/20">
+          <div>
+            <Image
+              src={project.data.image}
+              alt={project.data.title}
+              width={460}
+              height={270}
+              class="w-44 h-auto bg-contain rounded-xl ring-2 ring-secondary"
+            />
+          </div>
+          <div class="flex-1">
+            <CardHeader class="p-0">
+              <CardTitle>{project.data.title}</CardTitle>
+              <CardDescription>{project.data.description}</CardDescription>
+            </CardHeader>
+            <CardContent class="p-0 pt-3 sm:pt-6">
+              <div class="flex flex-wrap gap-1">
+                {project.data.tags.map((tag) => (
+                  <Badge variant="outline">
+                    {tagsMap[tag] ? (
+                      <Image
+                        src={tagsMap[tag]}
+                        alt={tag}
+                        width={24}
+                        height={24}
+                        class="h-4 w-4 mr-1"
+                      />
+                    ) : null}
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </div>
         </Card>
       </a>
     ))

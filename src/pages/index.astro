@@ -4,6 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Navbar from "@/components/Navbar.astro";
 import Introduction from "@/components/Introduction.astro";
 import Projects from "@/components/Projects.astro";
+import ScrollPrompt from "@/components/ScrollPrompt.astro";
 
 const projects = await getCollection("projects");
 ---
@@ -12,11 +13,13 @@ const projects = await getCollection("projects");
   title="Welcome"
   description="Hi, this is Touha. Welcome to my portfolio."
 >
-  <div class="container p-4 sm:max-w-screen-sm mx-auto pt-48">
+  <div class="container p-4 sm:max-w-screen-sm mx-auto pt-32 sm:pt-48">
     <Introduction />
     <div class="mt-12 sm:mt-8">
       <Navbar />
     </div>
-    <Projects projects={projects} />
+    <div class="mt-12">
+      <Projects projects={projects} />
+    </div>
   </div>
 </BaseLayout>

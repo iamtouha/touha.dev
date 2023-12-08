@@ -1,11 +1,12 @@
 ---
 import { Image } from "astro:assets";
 
+import Chip from "./Chip.astro";
+import TopRightArrowIcon from "@/components/icons/TopRightArrow.astro";
+
 import NextjsLogo from "@/assets/next-js.svg";
 import ReactLogo from "@/assets/react-2.svg";
 import NodeLogo from "@/assets/nodejs-icon.svg";
-import Chip from "./Chip.astro";
-
 import ProfilePhoto from "@/assets/touha.jpeg";
 ---
 
@@ -23,20 +24,22 @@ import ProfilePhoto from "@/assets/touha.jpeg";
   </div>
 </div>
 <p class="mt-8 text-lg">
-  Crafting modern TypeScript web apps with <Chip
+  I craft modern TypeScript web apps with <Chip
     href="https://nextjs.org/"
     src={NextjsLogo}
     label="Nextjs"
   /> and other <Chip href="https://react.dev/" src={ReactLogo} label="React" />
-   based frameworks. Developing scalable, speedy backends and APIs in <Chip
+   based frameworks. I also develop scalable, performant backends and APIs in <Chip
     href="https://nodejs.org/"
     src={NodeLogo}
     label="Nodejs"
   /> or compatible JavaScript runtimes.
 </p>
 <p class="mt-4 text-lg">
-  Need assistance or want to start a project? Email me at <a
+  Need assistance or want to start a project? Mail me at <a
     href="mailto:mail@touha.dev"
-    class="font-bold hover:underline">mail@touha.dev</a
+    class="font-bold hover:underline"
+  >
+    mail@touha.dev</a
   >.
 </p>
