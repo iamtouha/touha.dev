@@ -6,7 +6,17 @@ const projectsCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     date: z.date(),
-    image: z.string(),
+    img: z.string(),
+    tags: z.array(z.string()),
+  }),
+});
+
+const articlesCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.date(),
     tags: z.array(z.string()),
   }),
 });

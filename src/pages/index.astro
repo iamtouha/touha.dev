@@ -4,7 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Navbar from "@/components/Navbar.astro";
 import Introduction from "@/components/Introduction.astro";
 import Projects from "@/components/Projects.astro";
-import ScrollPrompt from "@/components/ScrollPrompt.astro";
+import Footer from "@/components/Footer.astro";
 
 const projects = await getCollection("projects");
 ---
@@ -15,11 +15,16 @@ const projects = await getCollection("projects");
 >
   <div class="container p-4 sm:max-w-screen-sm mx-auto pt-32 sm:pt-48">
     <Introduction />
-    <div class="mt-12 sm:mt-8">
+    <div class="mt-16 sm:mt-12">
       <Navbar />
     </div>
-    <div class="mt-12">
+    <div class="mt-16">
       <Projects projects={projects} />
     </div>
+    <div class="mt-16">
+      <Projects projects={projects} />
+    </div>
+
+    <Footer />
   </div>
 </BaseLayout>

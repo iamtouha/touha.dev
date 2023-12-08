@@ -1,0 +1,48 @@
+---
+import Github from "@/components/icons/Github.astro";
+import Linkedin from "@/components/icons/Linkedin.astro";
+import Twitter from "@/components/icons/Twitter.astro";
+import ThemeToggle from "@/components/ThemeToggle";
+import { buttonVariants } from "@/lib/ui-variants/button";
+import { cn } from "@/lib/utils";
+
+const social = [
+  {
+    name: "Twitter",
+    url: "https://twitter.com/iamtouha",
+    icon: Twitter,
+  },
+  {
+    name: "GitHub",
+    url: "https://github.com/touha98",
+    icon: Github,
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/touhazr",
+    icon: Linkedin,
+  },
+];
+---
+
+<div class="flex justify-between flex-wrap mt-28">
+  <div class="flex space-x-2">
+    {
+      social.map((item) => (
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
+        >
+          <item.icon class="w-5 h-5" />
+        </a>
+      ))
+    }
+  </div>
+  <ThemeToggle client:load />
+</div>
+<p class="mt-6 text-sm text-muted-foreground">
+  Made with Astro, Tailwind CSS, and TypeScript.
+</p>
+<div class="h-12"></div>
