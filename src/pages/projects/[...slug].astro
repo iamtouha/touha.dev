@@ -78,13 +78,12 @@ const { Content } = await entry.render();
       <Image
         src={entry.data.img}
         alt={entry.data.title}
-        class="rounded-xl"
+        class="rounded-xl w-full h-64 ring-2 ring-secondary"
         width={640}
-        height={360}
-        class="rounded-xl"
+        height={256}
       />
     </div>
-    <article class="mt-12 prose dark:prose-invert prose-sm">
+    <article class="mt-12 prose dark:prose-invert w-auto">
       <Content />
     </article>
   </div>

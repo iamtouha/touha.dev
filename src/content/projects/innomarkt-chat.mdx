@@ -1,13 +1,13 @@
 ---
 title: Innomarkt Chat
 description:
-  Live chat feature (with file sending) in any website using web components.
+  Add customer support / live chat feature (with file sending) in any website using web components.
   Respond to queries from visitors in real time using websocket.
 date: 2023-08-13
 tags:
   - nextjs
   - express
-  - web components
+  - lit element
   - tailwindcss
   - socket.io
   - prisma
@@ -17,6 +17,52 @@ published: true
 featured: true
 ---
 
-# {frontmatter.title}
+import VideoComponent from "@/components/VideoComponent";
 
-## {frontmatter.description}
+### About
+
+Realtime customer support is a must have feature in many commercial websites. Any website can easily introduce live
+chat without writing any code. This is achieved by using web components which can be easily integrated in
+any website regardless of the framework used to build the website.
+
+### Demo Video
+
+<VideoComponent src={"/videos/innomarkt-demo.mkv"} muted autoplay />
+
+### Features
+
+    - Realtime communication between client and server using websocket.
+    - Easy integration in any website.
+    - File sending feature.
+    - Responsive design.
+    - Customizable widget theme.
+    - Admin dashboard to manage clients.
+    - Chat dashboard to respond to messages from visitors.
+
+### Tech Stack
+
+    - Next.js
+    - Express
+    - Lit Element
+    - Tailwindcss
+    - Socket.io
+    - Prisma
+    - Mysql
+    - AWS EC2
+
+### Outline
+
+Chat widget that is to be integrated in any website is built using [lit element](https://lit.dev/). The widget is published
+to npm as [@innomarkt/chat-widget](https://www.npmjs.com/package/@innomarkt/chat-widget). Clients need to import this package in
+the project and add the following code in order to integrate the widget in their website.
+
+```html
+<chat-widget apikey="Client API Key"></chat-widget>
+```
+
+Api key is obtained from thr admin dashboard. Clients can adjust the style of the widget according to their website theme by passing
+required values to theme attribute. They can respond to messages from visitors by logging into the chat dashboard.
+
+Realtime communication between the client and the server is achieved using [socket.io](https://socket.io/). The server is built
+using [express](https://expressjs.com/) and [prisma](https://www.prisma.io/) is used as the ORM. The server is deployed to
+an AWS EC2 instance. Mysql Database is hosted locally in the same instance.
