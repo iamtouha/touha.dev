@@ -8,12 +8,14 @@ const projectsCollection = defineCollection({
     date: z.date(),
     img: z.string(),
     tags: z.array(z.string()),
+    url: z.string().optional(),
+    repo: z.string().optional(),
     published: z.boolean().default(false),
     featured: z.boolean().default(false),
   }),
 });
 
-const articlesCollection = defineCollection({
+const postsCollection = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
@@ -27,5 +29,5 @@ const articlesCollection = defineCollection({
 
 export const collections = {
   projects: projectsCollection,
-  articles: articlesCollection,
+  posts: postsCollection,
 };

@@ -48,6 +48,18 @@ const ThemeToggle = () => {
   };
 
   useEffect(() => {
+    const afterSwap = () => {
+      const t = localStorage.getItem("theme") as "light" | "dark" | undefined;
+
+      handleOptionSelect(t ?? "system");
+    };
+    document.addEventListener("astro:after-swap", afterSwap);
+    return () => {
+      document.removeEventListener("astro:after-swap", afterSwap);
+    };
+  }, []);
+
+  useEffect(() => {
     const checkIfClickedOutside = (e: MouseEvent) => {
       if (isOpen && ref.current && !ref.current.contains(e.target as Node)) {
         setIsOpen(false);

@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import Posts from "@/components/Posts.astro";
+import ArticleLayout from "@/layouts/ArticleLayout.astro";
+
+const posts = await getCollection("posts", ({ data }) => data.published);
+---
+
+<ArticleLayout
+  title="Posts"
+  description="Explore my portfolio's diverse Posts. From web design to development, discover my range of creative solutions and expertise."
+>
+  <div class="container p-4 sm:max-w-screen-sm mx-auto pt-32 sm:pt-48">
+    <h1 class="text-2xl mb-8 text-center font-bold">My Posts</h1>
+    <Posts posts={posts} />
+  </div>
+</ArticleLayout>

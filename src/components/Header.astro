@@ -3,18 +3,23 @@ import { Image } from "astro:assets";
 
 import Navbar from "@/components/Navbar.astro";
 import ProfilePhoto from "@/assets/touha.jpeg";
+
+interface Props {
+  active?: string;
+}
 ---
 
 <div
   class="flex items-center rounded-xl px-2 sm:px-4 py-2 bg-secondary/50 backdrop-blur-sm shadow-lg shadow-secondary/30"
 >
-  <div
+  <a
+    href="/"
     class="flex-shrink-0 rounded-full overflow-hidden w-10 h-10 border-2 ring-2 border-muted-foreground ring-secondary"
   >
     <Image src={ProfilePhoto} alt="Touha Zohair" class="w-full h-full" />
-  </div>
+  </a>
   <div class="mx-auto"></div>
   <div class="sm:flex-none">
-    <Navbar shrink />
+    <Navbar active={Astro.props.active} />
   </div>
 </div>

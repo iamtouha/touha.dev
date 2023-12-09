@@ -1,6 +1,6 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
 import Card from "@/components/ui/card/Card.astro";
 import CardHeader from "@/components/ui/card/CardHeader.astro";
 import CardTitle from "@/components/ui/card/CardTitle.astro";
@@ -15,8 +15,6 @@ interface Props {
 
 const { projects } = Astro.props;
 ---
-
-<h1 class="text-xl text-center font-bold">My Projects</h1>
 
 <div class="mt-4 space-y-4">
   {

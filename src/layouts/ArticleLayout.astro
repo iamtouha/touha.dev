@@ -1,0 +1,25 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  pageName?: string;
+  image?: string;
+}
+const { title, description, image, pageName } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} image={image}>
+  <div class="fixed w-full">
+    <div class="max-w-screen-sm mx-auto p-3 sm:p-4 z-10">
+      <Header active={pageName} />
+    </div>
+  </div>
+  <slot />
+  <div class="max-w-screen-sm mx-auto p-4">
+    <Footer />
+  </div>
+</BaseLayout>

@@ -6,18 +6,18 @@ import MessageIcon from "@/components/icons/Message.astro";
 import { cn } from "@/lib/utils";
 
 interface Props {
-  shrink?: boolean;
+  active?: string;
 }
 
-const social = [
+const links = [
   {
     name: "Projects",
     href: "/projects",
     icon: FeatherIcon,
   },
   {
-    name: "Blog",
-    href: "/blog",
+    name: "Posts",
+    href: "/posts",
     icon: MessageIcon,
   },
   {
@@ -32,21 +32,32 @@ const social = [
   },
 ];
 
-const { shrink } = Astro.props;
+const { active } = Astro.props;
 ---
 
 <nav class={cn("p-2 flex space-x-5 sm:space-x-7")}>
   {
-    social.map((item) => (
+    links.map((link) => (
       <a
-        href={item.href}
-        class="group focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        href={link.href}
+        class={cn(
+          "group focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+        )}
       >
         <div class="flex flex-wrap items-center justify-center text-xs sm:text-sm font-bold gap-1 sm:gap-2">
-          <div class="bg-primary text-primary-foreground p-1 rounded-lg group-hover:shadow-lg transition transform ease-out group-active:translate-y-1 group-hover:scale-[1.2]">
-            <item.icon class="w-[18px] h-[18px] transform transition ease-out group-hover:scale-110 delay-100 duration-500" />
+          <div
+            class={cn(
+              "bg-primary text-primary-foreground p-1 rounded-lg",
+              "transition transform ease-out group-hover:shadow-lg group-active:translate-y-1 group-hover:scale-[1.2]",
+              {
+                "ring-2 ring-primary/50":
+                  active?.toLowerCase() === link.name.toLowerCase(),
+              },
+            )}
+          >
+            <link.icon class="w-[18px] h-[18px] transform transition ease-out group-hover:scale-110 delay-100 duration-500" />
           </div>
-          {item.name}
+          {link.name}
         </div>
       </a>
     ))
