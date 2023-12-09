@@ -8,6 +8,7 @@ const projectsCollection = defineCollection({
     date: z.date(),
     img: z.string(),
     tags: z.array(z.string()),
+    published: z.boolean().default(false),
   }),
 });
 
@@ -17,10 +18,11 @@ const articlesCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     date: z.date(),
-    tags: z.array(z.string()),
+    published: z.boolean().default(false),
   }),
 });
 
 export const collections = {
   projects: projectsCollection,
+  articles: articlesCollection,
 };

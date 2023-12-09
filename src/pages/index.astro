@@ -4,9 +4,13 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Navbar from "@/components/Navbar.astro";
 import Introduction from "@/components/Introduction.astro";
 import Projects from "@/components/Projects.astro";
+import Blog from "@/components/Blog.astro";
 import Footer from "@/components/Footer.astro";
 
-const projects = await getCollection("projects");
+const [projects, articles] = await Promise.all([
+  getCollection("projects", ({ data }) => data.published),
+  getCollection("articles", ({ data }) => data.published),
+]);
 ---
 
 <BaseLayout
@@ -18,11 +22,11 @@ const projects = await getCollection("projects");
     <div class="mt-16 sm:mt-12">
       <Navbar />
     </div>
-    <div class="mt-16">
+    <div class="mt-24">
       <Projects projects={projects} />
     </div>
     <div class="mt-16">
-      <Projects projects={projects} />
+      <Blog articles={articles} />
     </div>
 
     <Footer />
