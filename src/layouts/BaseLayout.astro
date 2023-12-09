@@ -38,6 +38,7 @@ const { title, description, image, type } = Astro.props;
 
 <html lang="en">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
   <SEO
     title={title}
     titleTemplate="%s | Touha"
@@ -46,7 +47,7 @@ const { title, description, image, type } = Astro.props;
       basic: {
         title,
         type: type ?? "webpage",
-        image: image ?? "/assets/astro-logo.png",
+        image: image ?? "/api/og.png",
       },
       image: image
         ? { url: image, width: 1200, height: 630, alt: title }
