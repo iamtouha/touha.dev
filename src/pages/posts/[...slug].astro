@@ -28,7 +28,9 @@ const { Content } = await entry.render();
   description={entry.data.description}
 >
   <div class="container p-4 sm:max-w-screen-sm mx-auto pt-32 sm:pt-48">
-    <h1 class="text-2xl sm:text-3xl font-bold">{entry.data.title}</h1>
+    <h1 class="text-2xl sm:text-3xl font-bold">
+      {entry.data.title}
+    </h1>
 
     <p class="text-muted-foreground mb-6">
       {entry.data.date.toLocaleDateString(undefined, { dateStyle: "medium" })}
@@ -39,7 +41,7 @@ const { Content } = await entry.render();
       {entry.data.description}
     </p>
 
-    <article class="mt-12 prose dark:prose-invert prose-sm">
+    <article class="mt-12 prose dark:prose-invert w-auto">
       <Content />
     </article>
   </div>

@@ -1,7 +1,8 @@
 ---
-import "../styles/globals.css";
 import { SEO } from "astro-seo";
-import { ViewTransitions } from "astro:transitions";
+
+import "../styles/globals.css";
+
 interface Props {
   title: string;
   description?: string;
@@ -12,9 +13,6 @@ const { title, description, image, type } = Astro.props;
 ---
 
 <script is:inline>
-  window.onbeforeunload = function () {
-    window.scrollTo(0, 0);
-  };
   const getThemePreference = () => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
       return localStorage.getItem("theme");
@@ -56,16 +54,16 @@ const { title, description, image, type } = Astro.props;
     }}
   />
   <link rel="icon" href="/favicon.ico" />
-  <link rel="sitemap" href="/sitemap-index.xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
+  <link rel="sitemap" href="/sitemap-index.xml" />
 
   <body>
     <slot />
-    <ViewTransitions />
+    <!-- <ViewTransitions /> -->
   </body>
 </html>
