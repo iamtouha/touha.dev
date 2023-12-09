@@ -9,6 +9,7 @@ const projectsCollection = defineCollection({
     img: z.string(),
     tags: z.array(z.string()),
     published: z.boolean().default(false),
+    featured: z.boolean().default(false),
   }),
 });
 
@@ -17,8 +18,10 @@ const articlesCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    read: z.string(),
     date: z.date(),
     published: z.boolean().default(false),
+    featured: z.boolean().default(false),
   }),
 });
 

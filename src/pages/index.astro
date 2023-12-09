@@ -2,24 +2,53 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Navbar from "@/components/Navbar.astro";
+import Header from "@/components/Header.astro";
 import Introduction from "@/components/Introduction.astro";
 import Projects from "@/components/Projects.astro";
 import Blog from "@/components/Blog.astro";
 import Footer from "@/components/Footer.astro";
 
 const [projects, articles] = await Promise.all([
-  getCollection("projects", ({ data }) => data.published),
-  getCollection("articles", ({ data }) => data.published),
+  getCollection("projects", ({ data }) => data.published && data.featured),
+  getCollection("articles", ({ data }) => data.published && data.featured),
 ]);
 ---
+
+<script>
+  const pageNav = document.getElementById("pageNav");
+  const header = document.getElementById("header");
+
+  const observer = new IntersectionObserver(
+    ([e]) => {
+      if (e.isIntersecting) {
+        header?.classList.add("hide-header");
+      } else {
+        header?.classList.remove("hide-header");
+      }
+    },
+    { threshold: [0.6] },
+  );
+  if (pageNav) {
+    observer.observe(pageNav);
+  }
+</script>
 
 <BaseLayout
   title="Welcome"
   description="Hi, this is Touha. Welcome to my portfolio."
 >
+  <div class="fixed w-full">
+    <div
+      class="max-w-screen-sm mx-auto p-3 sm:p-4 z-10 transition-[visibility,scale,opacity] hide-header"
+      id="header"
+    >
+      <Header />
+    </div>
+  </div>
+
   <div class="container p-4 sm:max-w-screen-sm mx-auto pt-32 sm:pt-48">
     <Introduction />
-    <div class="mt-16 sm:mt-12">
+    <div id="pageNav" class="mt-16 sm:mt-12">
       <Navbar />
     </div>
     <div class="mt-24">
@@ -32,3 +61,11 @@ const [projects, articles] = await Promise.all([
     <Footer />
   </div>
 </BaseLayout>
+
+<style>
+  .hide-header {
+    visibility: hidden;
+    scale: 0.85;
+    opacity: 0;
+  }
+</style>

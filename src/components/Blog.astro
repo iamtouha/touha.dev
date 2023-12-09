@@ -29,7 +29,9 @@ const { articles } = Astro.props;
             <CardHeader class="pb-2">
               <CardTitle>{article.data.title}</CardTitle>
               <CardDescription>
-                {article.data.date.toLocaleDateString()}
+                {article.data.date.toLocaleDateString()}{" "}
+                <span class="h-[5px] w-[5px] rounded-full bg-muted-foreground inline-block mb-[3px]" />{" "}
+                {article.data.read}
               </CardDescription>
             </CardHeader>
             <CardContent class="text-muted-foreground">
