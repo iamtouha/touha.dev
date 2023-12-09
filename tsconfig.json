@@ -1,11 +1,9 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "D:/code/touha",
+    "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
