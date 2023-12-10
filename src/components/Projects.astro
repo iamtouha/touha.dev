@@ -33,6 +33,7 @@ const { projects } = Astro.props;
                 alt={project.data.title}
                 width={460}
                 height={270}
+                loading="lazy"
                 class={cn(
                   "w-44 h-28 bg-cover rounded-xl ring-2 ring-secondary",
                 )}
