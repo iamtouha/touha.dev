@@ -1,5 +1,5 @@
 import { OG } from "@/components/OG";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import { ImageResponse } from "@vercel/og";
 
 interface Props {

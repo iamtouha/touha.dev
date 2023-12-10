@@ -1,9 +1,8 @@
-import { OG } from "@/components/OG";
-
 import { ImageResponse } from "@vercel/og";
+import { OG } from "@/components/OG";
 import type { APIRoute } from "astro";
 
-export const GET: APIRoute = ({ params, request }) => {
+export const GET: APIRoute = () => {
   try {
     return new ImageResponse(OG({ title: "Hello World! 👋" }));
   } catch (e: any) {
