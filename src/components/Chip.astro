@@ -18,6 +18,10 @@ const { href, label, src } = Astro.props;
   variant="secondary"
   class="text-base font-bold translate-y-0.5 px-1.5 leading-tight rounded-lg"
 >
-  {src ? <Image src={src} alt={"nextjs"} class="w-4 h-4 -my-1 mr-1" /> : null}
+  {
+    src ? (
+      <Image src={src} alt={`${label} logo`} class="w-4 h-4 -my-1 mr-1" />
+    ) : null
+  }
   {label}
 </Badge>

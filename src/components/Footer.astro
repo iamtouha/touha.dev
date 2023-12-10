@@ -32,7 +32,7 @@ const social = [
         <a
           href={item.url}
           target="_blank"
-          rel="noopener noreferrer"
+          aria-label={`${item.name} link`}
           class={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
         >
           <item.icon class="w-5 h-5" />
