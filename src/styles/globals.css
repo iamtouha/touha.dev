@@ -58,12 +58,10 @@
   }
 }
 
-.font-cursive {
-  font-family: "Cookie", cursive;
-}
-.section-title {
-  background-image: linear-gradient(hsl(var(--primary)), hsl(var(--primary)));
-  background-repeat: no-repeat;
-  background-size: 100% 3px;
-  background-position: left bottom;
+@font-face {
+  font-family: "Nunito Sans";
+  src: url("/fonts/nunito_sans.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }

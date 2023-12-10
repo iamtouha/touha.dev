@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Mulish", ...defaultTheme.fontFamily.sans],
+        sans: ["Nunito Sans", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",
