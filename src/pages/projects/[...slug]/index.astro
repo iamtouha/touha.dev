@@ -26,6 +26,7 @@ const { Content } = await entry.render();
 <ArticleLayout
   title={`${entry.data.title} - Project`}
   description={entry.data.description}
+  image={`/prjects/${entry.slug}/og.png`}
 >
   <div class="container p-4 sm:max-w-screen-sm mx-auto pt-32 sm:pt-48">
     <h1 class="text-2xl sm:text-3xl font-bold">{entry.data.title}</h1>
