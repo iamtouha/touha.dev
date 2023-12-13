@@ -1,27 +1,23 @@
-import { OG } from "@/components/OG";
 import { getCollection } from "astro:content";
-import { ImageResponse } from "@vercel/og";
+import { generateOG } from "@/lib/generate-og";
+import { formatDate } from "@/lib/utils";
 
 interface Props {
   params: { slug: string };
-  props: { title: string };
+  props: { title: string; subtitle: string };
 }
 
-export const GET = ({ props: { title } }: Props) => {
-  try {
-    return new ImageResponse(OG({ title }));
-  } catch (e: any) {
-    console.log(`${e.message}`);
-    return new Response(`Failed to generate the image`, {
-      status: 500,
-    });
-  }
+export const GET = ({ props: { title, subtitle } }: Props) => {
+  return generateOG({ title, subtitle });
 };
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   return posts.map((entry) => ({
     params: { slug: entry.slug },
-    props: { title: entry.data.title },
+    props: {
+      title: entry.data.title,
+      subtitle: `${formatDate(entry.data.date)} • ${entry.data.read}`,
+    },
   }));
 }
