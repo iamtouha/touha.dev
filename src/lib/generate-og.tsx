@@ -40,7 +40,7 @@ const OG = ({ title, subtitle }: { title: string; subtitle: string }) => {
       <div
         style={{
           display: "flex",
-          alignItems: "center",
+          alignItems: "flex-start",
           justifyContent: "space-between",
           paddingLeft: "50px",
           paddingRight: "50px",
@@ -51,8 +51,9 @@ const OG = ({ title, subtitle }: { title: string; subtitle: string }) => {
           src={profileImg}
           alt="profile"
           style={{
-            width: "64px",
-            height: "64px",
+            width: "100px",
+            height: "100px",
+            marginTop: "50px",
             borderRadius: "50%",
             border: "3px solid grey",
           }}
