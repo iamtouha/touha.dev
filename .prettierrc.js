@@ -13,5 +13,11 @@ export default {
         parser: "astro",
       },
     },
+    {
+      files: "*.mdx",
+      options: {
+        proseWrap: "always",
+      },
+    },
   ],
 };
