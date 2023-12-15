@@ -14,7 +14,7 @@ interface Props {
 const { posts } = Astro.props;
 ---
 
-<div class="mt-4 space-y-4">
+<div class="mt-4 flex space-y-4">
   {
     posts
       .sort((pa, pb) => {
@@ -23,8 +23,8 @@ const { posts } = Astro.props;
         return b.getTime() - a.getTime();
       })
       .map((article) => (
-        <a href={`/posts/${article.slug}`}>
-          <Card class="border-0 shadow-none transition-colors duration-500 hover:bg-secondary/30">
+        <a href={`/posts/${article.slug}`} class="block">
+          <Card class="border-0 shadow-none transition-colors duration-500 hover:bg-secondary/50 dark:hover:bg-secondary/30">
             <CardHeader class="pb-2">
               <CardTitle>{article.data.title}</CardTitle>
               <CardDescription>

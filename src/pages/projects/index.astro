@@ -7,11 +7,11 @@ const projects = await getCollection("projects", ({ data }) => data.published);
 ---
 
 <ArticleLayout
-  title="My Projects"
+  title="Projects"
   description="Explore my portfolio's diverse projects. From web design to development, discover my range of creative solutions and expertise."
 >
   <div class="container p-4 sm:max-w-screen-sm mx-auto pt-32 sm:pt-48">
-    <h1 class="text-2xl mb-8 text-center font-bold">My Projects</h1>
+    <h1 class="text-2xl mb-8 text-center font-bold">Projects</h1>
     <Projects projects={projects} />
   </div>
 </ArticleLayout>

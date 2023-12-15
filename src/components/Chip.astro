@@ -15,13 +15,13 @@ const { href, label, src } = Astro.props;
 <Badge
   href={href}
   target="_blank"
-  variant="secondary"
-  class="text-base font-bold translate-y-0.5 px-1.5 leading-tight rounded-lg"
+  variant="outline"
+  class="text-base text-muted-foreground font-medium translate-y-0.5 px-1.5 leading-tight rounded-lg"
 >
   {
     src ? (
       <Image src={src} alt={`${label} logo`} class="w-4 h-4 -my-1 mr-1" />
     ) : null
   }
-  {label}
+  <span class="-translate-y-0.5">{label}</span>
 </Badge>
