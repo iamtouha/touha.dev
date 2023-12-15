@@ -1,13 +1,41 @@
 ---
 import { getCollection } from "astro:content";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/lib/ui-variants/button";
+
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Navbar from "@/components/Navbar.astro";
-import Header from "@/components/Header.astro";
+import Button from "@/components/ui/Button.astro";
 import Introduction from "@/components/Introduction.astro";
 import Projects from "@/components/Projects.astro";
 import Posts from "@/components/Posts.astro";
 import Footer from "@/components/Footer.astro";
+
+import ArrowRight from "@/components/icons/ArrowRight.astro";
+import Github from "@/components/icons/Github.astro";
+import Linkedin from "@/components/icons/Linkedin.astro";
+import Twitter from "@/components/icons/Twitter.astro";
 import { HeaderToggle } from "@/components/HeaderToggle";
+import Header from "@/components/Header.astro";
+import Navbar from "@/components/Navbar.astro";
+import ContactMe from "@/components/ContactMe.astro";
+
+const social = [
+  {
+    name: "GitHub",
+    url: "https://github.com/touha98",
+    icon: Github,
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/iamtouha",
+    icon: Twitter,
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/touhazr",
+    icon: Linkedin,
+  },
+];
 
 const [projects, posts] = await Promise.all([
   getCollection("projects", ({ data }) => data.published && data.featured),
@@ -25,17 +53,39 @@ const [projects, posts] = await Promise.all([
 
   <div class="container p-4 sm:max-w-screen-sm mx-auto pt-32 sm:pt-48">
     <Introduction />
+
     <div id="pageNav" class="mt-16 sm:mt-12">
       <Navbar />
     </div>
 
     <div class="mt-24"></div>
-    <h1 class="text-xl text-center font-bold">Projects</h1>
-    <Projects projects={projects} />
+    <h1 class="mb-8 sm:mb-12 text-lg font-bold uppercase">My Projects</h1>
 
-    <div class="mt-16"></div>
-    <h1 class="text-xl text-center font-bold">Posts</h1>
-    <Posts posts={posts} />
+    <div class="-mx-4 sm:-mx-6">
+      <Projects projects={projects} />
+    </div>
+
+    <div class="mb-14 mt-2 flex justify-end">
+      <a href="/projects">
+        <Button variant="ghost">
+          View all projects <ArrowRight class="w-5 h-5 ml-1" />
+        </Button>
+      </a>
+    </div>
+    <h1 class="mb-8 sm:mb-12 text-lg font-bold uppercase">My Posts</h1>
+    <div class="-mx-4 sm:-mx-6">
+      <Posts posts={posts} />
+    </div>
+    <div class="mb-14 mt-2 flex justify-end">
+      <a href="/posts">
+        <Button variant="ghost">
+          View all posts <ArrowRight class="w-5 h-5 ml-1" />
+        </Button>
+      </a>
+    </div>
+
+    <h1 class="mb-8 sm:mb-12 text-lg font-bold uppercase">Contact Me</h1>
+    <ContactMe />
 
     <Footer />
   </div>

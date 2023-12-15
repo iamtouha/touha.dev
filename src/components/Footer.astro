@@ -35,7 +35,7 @@ const social = [
           aria-label={`${item.name} link`}
           class={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
         >
-          <item.icon class="w-5 h-5" />
+          <item.icon class="w-5 h-5 text-muted-foreground" />
         </a>
       ))
     }
@@ -43,10 +43,6 @@ const social = [
   <ThemeToggle client:load />
 </div>
 <p class="mt-6 text-sm text-muted-foreground">
-  Made with Astro, Tailwind CSS, and Vercel. Inspired from <a
-    href="https://delba.dev"
-    target="_blank"
-    class="hover:underline font-bold">delba.dev</a
-  >.
+  Made with Astro, Tailwind CSS, and Vercel.
 </p>
 <div class="h-12"></div>

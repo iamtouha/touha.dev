@@ -14,7 +14,7 @@ interface Props {
 const { posts } = Astro.props;
 ---
 
-<div class="mt-4 flex space-y-4">
+<div class="space-y-4">
   {
     posts
       .sort((pa, pb) => {
@@ -25,7 +25,7 @@ const { posts } = Astro.props;
       .map((article) => (
         <a href={`/posts/${article.slug}`} class="block">
           <Card class="border-0 shadow-none transition-colors duration-500 hover:bg-secondary/50 dark:hover:bg-secondary/30">
-            <CardHeader class="pb-2">
+            <CardHeader class="pb-2 px-4 pt-4 sm:px-6 sm:pt-6">
               <CardTitle>{article.data.title}</CardTitle>
               <CardDescription>
                 {article.data.date.toLocaleDateString(undefined, {
@@ -35,7 +35,7 @@ const { posts } = Astro.props;
                 {article.data.read}
               </CardDescription>
             </CardHeader>
-            <CardContent class="text-muted-foreground">
+            <CardContent class="text-muted-foreground  px-4 pb-4 sm:px-6 sm:pb-6">
               {article.data.description}
             </CardContent>
           </Card>

@@ -1,0 +1,52 @@
+---
+import { buttonVariants } from "@/lib/ui-variants/button";
+import { cn } from "@/lib/utils";
+const contact = [
+  {
+    name: "Email",
+    url: "mailto:mail@touha.dev",
+    text: "mail@touha.dev",
+  },
+  {
+    name: "Twitter",
+    url: "https://twitter.com/iamtouha",
+    text: "@iamtouha",
+  },
+  {
+    name: "Github",
+    url: "https://github.com/touha98",
+    text: "touha98",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/touhazr",
+    text: "touhazr",
+  },
+];
+---
+
+<div>
+  <ul>
+    {
+      contact.map((item) => (
+        <li class="py-1 flex items-center">
+          <p class="w-28 text-muted-foreground">{item.name}</p>
+          <a
+            href={item.url}
+            class={cn(
+              buttonVariants({
+                variant: "ghost",
+                size: "sm",
+                className: "text-base",
+              }),
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {item.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>

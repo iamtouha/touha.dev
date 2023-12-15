@@ -1,8 +1,8 @@
 ---
-import GithubIcon from "@/components/icons/Github.astro";
-import TwitterIcon from "@/components/icons/Twitter.astro";
 import FeatherIcon from "@/components/icons/Feather.astro";
 import MessageIcon from "@/components/icons/Message.astro";
+import AtIcon from "@/components/icons/At.astro";
+import GithubIcon from "@/components/icons/Github.astro";
 import { cn } from "@/lib/utils";
 
 interface Props {
@@ -21,14 +21,14 @@ const links = [
     icon: MessageIcon,
   },
   {
+    name: "Contact",
+    href: "/contact-me",
+    icon: AtIcon,
+  },
+  {
     name: "Github",
     href: "https://github.com/touha98",
     icon: GithubIcon,
-  },
-  {
-    name: "Twitter",
-    href: "https://twitter.com/iamtouha",
-    icon: TwitterIcon,
   },
 ];
 
@@ -41,23 +41,23 @@ const { active } = Astro.props;
       <a
         href={link.href}
         class={cn(
-          "group focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+          "group text-muted-foreground focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
         )}
       >
         <div class="flex flex-wrap items-center justify-center text-xs sm:text-sm font-bold gap-1 sm:gap-2">
-          <div
+          {/** <div
+            class={cn("p-1 rounded-lg", {
+              "bg-primary/30": active?.startsWith(link.href),
+            })}
+          /> */}
+          <link.icon
             class={cn(
-              "bg-primary text-primary-foreground p-1 rounded-lg",
-              "transition transform ease-out group-hover:shadow-lg group-active:translate-y-1 group-hover:scale-[1.2]",
-              {
-                "ring-2 ring-primary/50":
-                  active?.toLowerCase() === link.name.toLowerCase(),
-              },
+              "w-[18px] h-[18px]",
+              "transition transform ease-out group-hover:shadow-lg group-hover:scale-125 group-active:translate-y-1 duration-500",
             )}
-          >
-            <link.icon class="w-[18px] h-[18px] transform transition ease-out group-hover:scale-110 delay-100 duration-500" />
-          </div>
-          {link.name}
+          />
+
+          <span>{link.name}</span>
         </div>
       </a>
     ))
