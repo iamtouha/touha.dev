@@ -25,7 +25,10 @@ const { projects } = Astro.props;
         return b.getTime() - a.getTime();
       })
       .map((project) => (
-        <a href={`/projects/${project.slug}`} class="block">
+        <a
+          href={`/projects/${project.slug}`}
+          class="block rounded focus:outline-none focus-visible:outline-none focus:ring-1"
+        >
           <Card class="flex flex-col-reverse sm:flex-row p-4 gap-3 sm:p-6 sm:gap-6 border-0 shadow-none transition-colors duration-500 hover:bg-secondary/50 dark:hover:bg-secondary/30">
             <div>
               <Image

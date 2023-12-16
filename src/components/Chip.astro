@@ -16,12 +16,12 @@ const { href, label, src } = Astro.props;
   href={href}
   target="_blank"
   variant="outline"
-  class="text-base text-muted-foreground font-medium translate-y-0.5 px-1.5 leading-tight rounded-lg"
+  class="text-base text-muted-foreground font-medium translate-y-0.5 p-0.5 px-1.5 items-center rounded-md focus:ring-1 ring-offset-background"
 >
   {
     src ? (
-      <Image src={src} alt={`${label} logo`} class="w-4 h-4 -my-1 mr-1" />
+      <Image src={src} alt="" class="w-4 h-4 -my-1 mr-1" aria-hidden />
     ) : null
   }
-  <span class="-translate-y-0.5">{label}</span>
+  <span class="pb-0.5 leading-none"> {label}</span>
 </Badge>
