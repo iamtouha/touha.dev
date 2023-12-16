@@ -1,0 +1,133 @@
+---
+title: Effectively use @vercel/og image with Astro.js dynamic routes
+description:
+  "Use vercel's og image generator api to generate og image for dynamic routes
+  in astro.js static website."
+read: "5 min read"
+date: 2023-12-15
+published: true
+featured: true
+---
+
+Astro doesn't support jsx or tsx files in pages directory. So we need a
+workaround. At first create a JSX component in `src/components` directory.
+
+### Create a jsx component
+
+```tsx
+// src/components/generate-og.tsx
+import { ImageResponse } from "@vercel/og";
+
+export const generateOG = ({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle: string;
+}) => {
+  const og = new ImageResponse(<OG title={title} subtitle={subtitle} />);
+  return og;
+};
+
+const OG = ({ title, subtitle }: { title: string; subtitle: string }) => {
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        backgroundColor: "#0e0b30",
+        backgroundImage: "linear-gradient(160deg, #0e0b30 0%, #000 74%)",
+        display: "flex",
+        flexDirection: "column",
+        color: "white",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "flex-start",
+          justifyContent: "space-between",
+          paddingLeft: "50px",
+          paddingRight: "50px",
+          height: "25%",
+        }}
+      >
+        <p
+          style={{
+            fontWeight: 700,
+            color: "hsl(240 3.8% 46.1%)",
+            fontSize: "48px",
+          }}
+        >
+          yourwebsite.com
+        </p>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          height: "75%",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          padding: "50px",
+          lineHeight: "1",
+        }}
+      >
+        <h3
+          style={{
+            fontSize: "56px",
+            marginBottom: "30px",
+            fontWeight: 400,
+          }}
+        >
+          {title}
+        </h3>
+        <p
+          style={{
+            fontSize: "32px",
+            fontWeight: "bold",
+            color: "hsl(240 3.8% 46.1%)",
+          }}
+        >
+          {subtitle}
+        </p>
+      </div>
+    </div>
+  );
+};
+```
+
+Write a JSX component that will generate the og image. Then create and export a
+function that will call vercels og image generator api `ImageResponse` and
+return the image.
+
+Now the function can be imported and called in a any route file.
+
+### Use the component in your api
+
+```ts
+// src/pages/blog/[slug]/og.png.ts
+import { getCollection } from "astro:content";
+import { generateOG } from "@/lib/generate-og";
+
+interface Props {
+  params: { slug: string };
+  props: { title: string; subtitle: string };
+}
+
+export const GET = ({ props: { title, subtitle } }: Props) => {
+  return generateOG({ title, subtitle });
+};
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((entry) => ({
+    params: { slug: entry.slug },
+    props: {
+      title: entry.data.title,
+      subtitle: entry.data.description,
+    },
+  }));
+}
+```
+
+Thats all you need to do to use vercel og image with astro.js static website.
