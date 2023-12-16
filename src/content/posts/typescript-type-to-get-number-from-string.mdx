@@ -1,0 +1,29 @@
+---
+title: TypeScript type that converts string to number
+description:
+  "I found a handy way to convert string to number in TypeScript while solving a
+  Advent of Typescript challenge."
+read: "5 min read"
+date: 2023-12-15
+published: true
+featured: true
+---
+
+While solving a [Advent of Typescript](https://typehero.dev/aot-2023) challenge,
+I stumbled upon a problem where I almost solved it but I had to convert a string
+constant to a number. Initially it seemed impossible to do it in TypeScript but
+eventually I found a way to do it using type template literals.
+
+### Solution
+
+```ts
+type ToNumber<T> = T extends `${infer U extends number}` ? U : never;
+
+const input = "123" as const;
+type Input = typeof input;
+//    ^? type Input = "123"
+type Output = ToNumber<typeof input>;
+//     ^? type Output = 123
+```
+
+To find and solve more TypeScript challenges, check out Advent of Typescript.
