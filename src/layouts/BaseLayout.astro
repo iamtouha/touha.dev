@@ -54,7 +54,7 @@ const { title, description, image, type } = Astro.props;
     twitter={{
       card: "summary_large_image",
       site: "@iamtouha",
-      image: `https://www.touha.dev/${image ?? "/og.png"}`,
+      image: `https://www.touha.dev${image ?? "/og.png"}`,
       creator: "@iamtouha",
       description,
       title: `${title} | @iamtouha`,
