@@ -1,6 +1,7 @@
 ---
 import { buttonVariants } from "@/lib/ui-variants/button";
 import { cn } from "@/lib/utils";
+import FiverrCard from "./FiverrCard.astro";
 const contact = [
   {
     name: "Email",
@@ -26,7 +27,7 @@ const contact = [
 ---
 
 <div>
-  <ul>
+  <ul class="my-4">
     {
       contact.map((item) => (
         <li class="py-1 flex items-center">
@@ -49,4 +50,5 @@ const contact = [
       ))
     }
   </ul>
+  <FiverrCard />
 </div>

@@ -1,0 +1,50 @@
+---
+import TopRightArrow from "@/components/icons/TopRightArrow.astro";
+import Card from "@/components//ui/card/Card.astro";
+import CardContent from "@/components//ui/card/CardContent.astro";
+import CardDescription from "@/components//ui/card/CardDescription.astro";
+import CardHeader from "@/components//ui/card/CardHeader.astro";
+import CardTitle from "@/components//ui/card/CardTitle.astro";
+import StarIcon from "@/components//icons/Star.astro";
+
+const fiverrImg =
+  "https://fiverr-res.cloudinary.com/image/upload/t_profile_original,q_auto,f_auto/v1/attachments/profile/photo/6c41c65c88b53cf1b549eaf718e27751-1580317061418/ed9fe659-e1cb-4dd1-b8aa-a427d005588b.jpg";
+---
+
+<a href="https://www.fiverr.com/touha98" target="_blank">
+  <Card
+    class="transition-colors hover:bg-secondary/50 dark:hover:bg-secondary/30"
+  >
+    <div class="flex p-4">
+      <div class="mr-4">
+        <img
+          src={fiverrImg}
+          alt="Touha Zohair"
+          class="w-20 h-20 rounded-full"
+        />
+      </div>
+      <div class="w-full flex-1">
+        <CardHeader class="p-0 pb-4">
+          <CardTitle>Touha Zohair at Fiverr</CardTitle>
+          <CardDescription>Full Stack Web Developer</CardDescription>
+        </CardHeader>
+        <CardContent class="p-0">
+          <div class="flex flex-wrap items-center">
+            <span class="inline-flex">
+              <StarIcon class="w-4 h-4" />
+              <StarIcon class="w-4 h-4" />
+              <StarIcon class="w-4 h-4" />
+              <StarIcon class="w-4 h-4" />
+              <StarIcon class="w-4 h-4" />
+            </span>
+            <span class="ml-1">5.0 rating</span>
+            <span class="sm:ml-1">(75+ projects completed)</span>
+          </div>
+        </CardContent>
+      </div>
+      <div class="flex justify-center items-center">
+        <TopRightArrow class="w-6 h-6" />
+      </div>
+    </div>
+  </Card>
+</a>
