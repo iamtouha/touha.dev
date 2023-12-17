@@ -1,0 +1,35 @@
+---
+import { buttonVariants } from "@/lib/ui-variants/button";
+import { cn } from "@/lib/utils";
+import ArrowRight from "./icons/ArrowRight.astro";
+interface Props {
+  nextPage?: string;
+  prevPage?: string;
+}
+
+const { prevPage, nextPage } = Astro.props;
+---
+
+<div class="flex py-4">
+  {
+    prevPage ? (
+      <a
+        class={cn(buttonVariants({ variant: "ghost", class: "gap-1" }))}
+        href={prevPage}
+      >
+        <ArrowRight class="w-5 h-5 rotate-180" /> Previous Page
+      </a>
+    ) : null
+  }
+  <div class="mx-auto"></div>
+  {
+    nextPage ? (
+      <a
+        class={cn(buttonVariants({ variant: "ghost", class: "gap-1" }))}
+        href={nextPage}
+      >
+        Next Page <ArrowRight class="w-5 h-5" />
+      </a>
+    ) : null
+  }
+</div>

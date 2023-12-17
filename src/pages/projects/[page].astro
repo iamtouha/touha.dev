@@ -1,0 +1,38 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import ProjectCard from "@/components/ProjectCard.astro";
+import ArticleLayout from "@/layouts/ArticleLayout.astro";
+import Pagination from "@/components/Pagination.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const items = await getCollection("projects", ({ data }) => data.published);
+  return paginate(
+    items.toSorted((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+    { pageSize: 10 },
+  );
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<ArticleLayout
+  title="Projects"
+  description="Explore my portfolio's diverse projects. From web design to development, discover my range of creative solutions and expertise."
+>
+  <div class="container p-4 sm:max-w-screen-sm mx-auto pt-32 sm:pt-48">
+    <h1 class="text-2xl mb-8 text-center font-bold uppercase">Projects</h1>
+    <div class="space-y-4">
+      {page.data.map((project) => <ProjectCard project={project} />)}
+    </div>
+
+    <Pagination
+      prevPage={page.currentPage > 1
+        ? `/projects/${page.currentPage - 1}`
+        : undefined}
+      nextPage={page.currentPage < page.lastPage
+        ? `/projects/${page.currentPage + 1}`
+        : undefined}
+    />
+  </div>
+</ArticleLayout>

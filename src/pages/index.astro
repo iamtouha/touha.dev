@@ -5,18 +5,14 @@ import { buttonVariants } from "@/lib/ui-variants/button";
 
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Introduction from "@/components/Introduction.astro";
-import Projects from "@/components/Projects.astro";
-import Posts from "@/components/Posts.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import PostCard from "@/components/PostCard.astro";
 import Footer from "@/components/Footer.astro";
-
-import ArrowRight from "@/components/icons/ArrowRight.astro";
-import Github from "@/components/icons/Github.astro";
-import Linkedin from "@/components/icons/Linkedin.astro";
-import Twitter from "@/components/icons/Twitter.astro";
 import { HeaderToggle } from "@/components/HeaderToggle";
 import Header from "@/components/Header.astro";
 import Navbar from "@/components/Navbar.astro";
 import ContactMe from "@/components/ContactMe.astro";
+import ArrowRight from "@/components/icons/ArrowRight.astro";
 
 const [projects, posts] = await Promise.all([
   getCollection("projects", ({ data }) => data.published && data.featured),
@@ -42,21 +38,29 @@ const [projects, posts] = await Promise.all([
     <div class="mt-24"></div>
     <h1 class="mb-8 sm:mb-12 text-lg font-bold uppercase">My Projects</h1>
 
-    <div class="-mx-4 sm:-mx-6">
-      <Projects projects={projects} />
+    <div class="-mx-4 sm:-mx-6 space-y-4">
+      {
+        projects
+          .toSorted((a, b) => b.data.date.getTime() - a.data.date.getTime())
+          .map((project) => <ProjectCard project={project} />)
+      }
     </div>
 
     <div class="mb-14 mt-2 flex justify-end">
-      <a class={cn(buttonVariants({ variant: "ghost" }))} href="/projects">
+      <a class={cn(buttonVariants({ variant: "ghost" }))} href="/projects/1">
         View all projects <ArrowRight class="w-5 h-5 ml-1" />
       </a>
     </div>
     <h1 class="mb-8 sm:mb-12 text-lg font-bold uppercase">My Posts</h1>
-    <div class="-mx-4 sm:-mx-6">
-      <Posts posts={posts} />
+    <div class="-mx-4 sm:-mx-6 space-y-4">
+      {
+        posts
+          .toSorted((a, b) => b.data.date.getTime() - a.data.date.getTime())
+          .map((post) => <PostCard post={post} />)
+      }
     </div>
     <div class="mb-14 mt-2 flex justify-end">
-      <a class={cn(buttonVariants({ variant: "ghost" }))} href="/posts">
+      <a class={cn(buttonVariants({ variant: "ghost" }))} href="/posts/1">
         View all posts <ArrowRight class="w-5 h-5 ml-1" />
       </a>
     </div>
