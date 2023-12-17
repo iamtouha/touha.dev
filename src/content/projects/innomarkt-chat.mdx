@@ -1,11 +1,13 @@
 ---
 title: Innomarkt Chat
 description:
-  Add customer support / live chat feature (with file sending) in any website using web components.
-  Respond to queries from visitors in real time using websocket.
+  Add customer support / live chat feature (with file sending) in any website
+  using web components. Respond to queries from visitors in real time using
+  websocket.
 date: 2023-08-13
 tags:
-  - nextjs
+  - Turborepo
+  - React
   - express
   - lit element
   - tailwindcss
@@ -21,9 +23,10 @@ import VideoComponent from "@/components/VideoComponent";
 
 ### About
 
-Realtime customer support is a must have feature in many commercial websites. Any website can easily introduce live
-chat without writing any code. This is achieved by using web components which can be easily integrated in
-any website regardless of the framework used to build the website.
+Realtime customer support is a must have feature in many commercial websites.
+Any website can easily introduce live chat without writing any code. This is
+achieved by using web components which can be easily integrated in any website
+regardless of the framework used to build the website.
 
 ### Demo Video
 
@@ -52,17 +55,23 @@ any website regardless of the framework used to build the website.
 
 ### Outline
 
-Chat widget that is to be integrated in any website is built using [lit element](https://lit.dev/). The widget is published
-to npm as [@innomarkt/chat-widget](https://www.npmjs.com/package/@innomarkt/chat-widget). Clients need to import this package in
-the project and add the following code in order to integrate the widget in their website.
+Chat widget that is to be integrated in any website is built using
+[lit element](https://lit.dev/). The widget is published to npm as
+[@innomarkt/chat-widget](https://www.npmjs.com/package/@innomarkt/chat-widget).
+Clients need to import this package in the project and add the following code in
+order to integrate the widget in their website.
 
 ```html
 <chat-widget apikey="Client API Key"></chat-widget>
 ```
 
-Api key is obtained from thr admin dashboard. Clients can adjust the style of the widget according to their website theme by passing
-required values to theme attribute. They can respond to messages from visitors by logging into the chat dashboard.
+Api key is obtained from thr admin dashboard. Clients can adjust the style of
+the widget according to their website theme by passing required values to theme
+attribute. They can respond to messages from visitors by logging into the chat
+dashboard.
 
-Realtime communication between the client and the server is achieved using [socket.io](https://socket.io/). The server is built
-using [express](https://expressjs.com/) and [prisma](https://www.prisma.io/) is used as the ORM. The server is deployed to
-an AWS EC2 instance. Mysql Database is hosted locally in the same instance.
+Realtime communication between the client and the server is achieved using
+[socket.io](https://socket.io/). The server is built using
+[express](https://expressjs.com/) and [prisma](https://www.prisma.io/) is used
+as the ORM. The server is deployed to an AWS EC2 instance. Mysql Database is
+hosted locally in the same instance.
