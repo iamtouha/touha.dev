@@ -7,6 +7,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://touha.dev",
+  site: "https://www.touha.dev",
+
   integrations: [tailwind(), preact(), mdx(), sitemap()],
 });
