@@ -2,6 +2,7 @@
 import { SEO } from "astro-seo";
 
 import "../styles/globals.css";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -13,6 +14,9 @@ const { title, description, image, type } = Astro.props;
 ---
 
 <script is:inline>
+  if ("scrollRestoration" in history) {
+    history.replaceState({ scrollY: 0 }, "");
+  }
   const getThemePreference = () => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
       return localStorage.getItem("theme");
@@ -23,38 +27,44 @@ const { title, description, image, type } = Astro.props;
   };
   const isDark = getThemePreference() === "dark";
   document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+
+  document.addEventListener("astro:before-swap", (ev) => {
+    ev.newDocument.documentElement.classList[isDark ? "add" : "remove"]("dark");
+  });
 </script>
 
 <html lang="en">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta charset="utf-8" />
-  <SEO
-    title={title}
-    titleTemplate="%s | @iamtouha"
-    description={description}
-    openGraph={{
-      basic: {
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <SEO
+      title={title}
+      titleTemplate="%s | @iamtouha"
+      description={description}
+      openGraph={{
+        basic: {
+          title: `${title} | @iamtouha`,
+          type: type ?? "webpage",
+          image: image ?? "/og.png",
+        },
+        optional: { description },
+      }}
+      twitter={{
+        card: "summary_large_image",
+        site: "@iamtouha",
+        image: `https://www.touha.dev${image ?? "/og.png?version=1"}`,
+        creator: "@iamtouha",
+        description,
         title: `${title} | @iamtouha`,
-        type: type ?? "webpage",
-        image: image ?? "/og.png",
-      },
-      optional: { description },
-    }}
-    twitter={{
-      card: "summary_large_image",
-      site: "@iamtouha",
-      image: `https://www.touha.dev${image ?? "/og.png?version=1"}`,
-      creator: "@iamtouha",
-      description,
-      title: `${title} | @iamtouha`,
-      imageAlt: `${title} | @iamtouha`,
-    }}
-  />
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="sitemap" href="/sitemap-index.xml" />
+        imageAlt: `${title} | @iamtouha`,
+      }}
+    />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
 
   <body>
     <slot />
-    <!-- <ViewTransitions /> -->
+    <ViewTransitions />
   </body>
 </html>
