@@ -23,7 +23,6 @@ const { title, description, image, type } = Astro.props;
     }
     return "light";
   })();
-
   if (theme === "light") {
     document.documentElement.classList.remove("dark");
   } else {
@@ -33,9 +32,12 @@ const { title, description, image, type } = Astro.props;
   if ("scrollRestoration" in history) {
     history.replaceState({ scrollY: 0 }, "");
   }
-
   document.addEventListener("astro:before-swap", (ev) => {
-    ev.newDocument.documentElement.classList[isDark ? "add" : "remove"]("dark");
+    if (theme === "light") {
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+    }
   });
 </script>
 
