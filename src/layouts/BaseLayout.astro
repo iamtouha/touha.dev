@@ -34,9 +34,9 @@ const { title, description, image, type } = Astro.props;
   }
   document.addEventListener("astro:before-swap", (ev) => {
     if (theme === "light") {
-      document.documentElement.classList.remove("dark");
+      ev.newDocument.documentElement.classList.remove("dark");
     } else {
-      document.documentElement.classList.add("dark");
+      ev.newDocument.documentElement.classList.add("dark");
     }
   });
 </script>
